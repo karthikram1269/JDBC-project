@@ -1,2 +1,2 @@
-# JDBC-project
-This is my first project using JDBC
+# Hotel_Managing_Project
+- using Java,JDBC,MySql
