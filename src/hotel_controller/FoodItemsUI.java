@@ -50,7 +50,7 @@ public class FoodItemsUI {
 				}
 				break;
 				case 2 : {
-					System.out.println(" Updating food item price !!!! ");
+					System.out.println(" for Updating food item price !!!! ");
 					
 					System.out.println("Enter hotel id : ");
 					int hotel_id = sc.nextInt();
@@ -66,8 +66,8 @@ public class FoodItemsUI {
 					sc.nextLine();
 					fi.setPrice(price);
 					
-					fo.updateFoodItem(fi);
-					System.err.println("\n food item updated \n");
+					int s = fo.updateFoodItem(fi);
+					if(s > 0)System.err.println("\n food item updated \n");
 				}
 				break;
 				case 3 : {
@@ -97,7 +97,7 @@ public class FoodItemsUI {
 					fi.setName(item);
 					
 					int i = fo.fetchFoodItemId(fi);
-					if(i == 1)System.err.println("\n food item fetched \n");
+					if(i == 1)System.err.println("\n food item found \n");
 					else System.err.println("\n no food item found \n");
 				}
 				break;
