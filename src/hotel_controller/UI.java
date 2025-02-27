@@ -21,8 +21,15 @@ public class UI {
 
 		while (stay) {
 			System.out.println(" click : \n  1.Register\n  2.Login\n  3.Exit\n");
-
-			int click = sc.nextInt();
+			int click = 0;
+			try {
+				click = sc.nextInt();
+				sc.nextLine(); // Consume the newline character
+			} catch (InputMismatchException e) {
+				System.out.println("Invalid input! Provide an integer type input.");
+				sc.nextLine(); // Clear invalid input before retrying
+				continue; // Restart loop to ask for input again
+			}
 
 			switch (click) {
 			case 1: {
