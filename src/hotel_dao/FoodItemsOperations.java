@@ -55,7 +55,7 @@ public class FoodItemsOperations {
 		ResultSet rs = ps.executeQuery();
 
 		if (rs.next()) {
-			System.out.println(" Id : " + rs.getInt("hotel_id") + "\n Item : " + rs.getString("item")
+			System.out.println("Hotel_Id : " + rs.getInt("hotel_id") + "\n Item : " + rs.getString("item")
 					+ "\n Item Price : " + rs.getDouble("item_price"));
 			i++;
 		}
@@ -91,7 +91,7 @@ public class FoodItemsOperations {
 			ps.setInt(2, id);
 			ResultSet rs = ps.executeQuery();
 
-			while(rs.next()) {
+			if(rs.next()) {
 				if (rs.getInt("id") == id) {
 					i++;
 				}
@@ -148,10 +148,10 @@ public class FoodItemsOperations {
 			} else {
 				System.err.println(" invalid id ");
 			}
-			if (checkDuplicate(fi.getId(),fi.getName()) == 0) {
+			if (checkDuplicate(fi.getId(),fi.getName()) == 1) {
 				ps.setString(2, fi.getName());
 			} else {
-				System.err.println(fi.getName()+" already exists in hotel "+fi.getId());
+				System.err.println(fi.getName()+" not exists in hotel "+fi.getId());
 				return 0;
 			}
 
