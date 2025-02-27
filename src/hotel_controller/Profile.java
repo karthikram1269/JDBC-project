@@ -43,7 +43,7 @@ public class Profile {
 					sc.nextLine();
 
 					int i = po.updateProfileDetails(ld);
-					System.out.println(i == 1 ? "data added" : "data not added");
+					System.out.println(i == 1 ? "data updated" : "data not updated");
 				}
 				break;
 				
