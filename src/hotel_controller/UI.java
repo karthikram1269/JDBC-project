@@ -1,6 +1,7 @@
 package hotel_controller;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import hotel_dao.LoginOperations;
@@ -11,7 +12,7 @@ public class UI {
 	static Scanner sc = new Scanner(System.in);
 	static Login l = new Login();
 	static LoginOperations lo = new LoginOperations();
-	public static String LoginEmail ="";
+	public static String LoginEmail = "";
 
 	public static void main(String[] args) throws SQLException {
 
@@ -39,13 +40,12 @@ public class UI {
 				System.out.println("Enter name : ");
 				String name = sc.nextLine();
 				ld.setName(name);
-				
-				
+
 				System.out.println("Enter age : ");
 				int age = sc.nextInt();
 				ld.setAge(age);
 				sc.nextLine();
-				
+
 				System.out.println("Enter phone : ");
 				long phone = sc.nextLong();
 				ld.setPhone(phone);
@@ -54,9 +54,9 @@ public class UI {
 				System.out.println("Enter email : ");
 				String email = sc.nextLine();
 				ld.setEmail(email);
-				
-				//kar21@com
-				
+
+				// kar21@com
+
 				System.out.println("Enter password : ");
 				String pwd = sc.nextLine();
 				ld.setPassword(pwd);
@@ -64,7 +64,7 @@ public class UI {
 				int i = lo.register(ld);
 				System.out.println(i == 1 ? "data added" : "data not added");
 			}
-			break;
+				break;
 
 			case 2: {
 				LoginDs ld = new LoginDs();
@@ -80,25 +80,25 @@ public class UI {
 				int c = lo.login(ld);
 
 				switch (c) {
-					case 1 :{
-						System.err.println(" Login successful !!");
-						l.loginProfile();
-					}
+				case 1: {
+					System.err.println(" Login successful !!");
+					l.loginProfile();
+				}
 					break;
-					
-					case -1 : {
-						System.out.println(" invalid mail");
-					}
+
+				case -1: {
+					System.out.println(" invalid mail");
+				}
 					break;
-					
-					case 0 : {
-						System.out.println(" invalid password");
-					}
+
+				case 0: {
+					System.out.println(" invalid password");
+				}
 					break;
 				}
 			}
-			break;
-				
+				break;
+
 			case 3: {
 				stay = false;
 				System.out.print(" Chosen exit. See you next time.");
