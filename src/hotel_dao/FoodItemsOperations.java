@@ -73,11 +73,12 @@ public class FoodItemsOperations {
 		PreparedStatement ps = con.prepareStatement("select * from food_items where hotel_id = ? and item = ?");
 
 		ps.setInt(1, id);
-		ps.setString(2,name);
+		ps.setString(2, name);
 		ResultSet rs = ps.executeQuery();
-		
-		if(rs.next()) i++;
-		
+
+		if (rs.next())
+			i++;
+
 		return i;
 	}
 
@@ -91,12 +92,12 @@ public class FoodItemsOperations {
 			ps.setInt(2, id);
 			ResultSet rs = ps.executeQuery();
 
-			if(rs.next()) {
+			if (rs.next()) {
 				if (rs.getInt("id") == id) {
 					i++;
 				}
 			}
-			
+
 		} catch (SQLException e) {
 			System.err.println(" invalid id ");
 		}
@@ -110,16 +111,16 @@ public class FoodItemsOperations {
 
 			PreparedStatement ps = con.prepareStatement("insert into food_items values(?,?,?)");
 
-			if (fetchUserHotelIds(fi.getId()) > 0 ) {
+			if (fetchUserHotelIds(fi.getId()) == 1) {
 				ps.setInt(3, fi.getId());
 			} else {
-				System.err.println(" invalid id ");
+				System.err.println(" hotel_id not registered with your profile");
 				return 0;
 			}
-			if (checkDuplicate(fi.getId(),fi.getName()) == 0) {
+			if (checkDuplicate(fi.getId(), fi.getName()) == 0) {
 				ps.setInt(3, fi.getId());
 			} else {
-				System.err.println(fi.getName()+" already exists in hotel "+fi.getId());
+				System.err.println(fi.getName() + " already exists in hotel " + fi.getId());
 				return 0;
 			}
 
@@ -136,59 +137,55 @@ public class FoodItemsOperations {
 	}
 
 	public int updateFoodItem(FoodItems fi) {
+		
 		int i = 0;
 		try {
 			createFoodItemTable();
-
 			PreparedStatement ps = con
 					.prepareStatement("update food_items set item_price = ? where item = ? and hotel_id = ?");
 
 			if (fetchUserHotelIds(fi.getId()) == 1) {
 				ps.setInt(3, fi.getId());
 			} else {
-				System.err.println(" invalid id ");
-			}
-			if (checkDuplicate(fi.getId(),fi.getName()) == 1) {
-				ps.setString(2, fi.getName());
-			} else {
-				System.err.println(fi.getName()+" not exists in hotel "+fi.getId());
+				System.err.println(" hotel_id not registered with your profile");
 				return 0;
 			}
-
+			if (checkDuplicate(fi.getId(), fi.getName()) == 1) {
+				ps.setString(2, fi.getName());
+			} else {
+				System.err.println(fi.getName() + " not exists in hotel " + fi.getId());
+				return 0;
+			}
 			ps.setDouble(1, fi.getprice());
-
 			i = ps.executeUpdate();
 			ps.close();
 			con.close();
-
 			System.err.println(i + " row(s) updated successfully !!! ");
-
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			System.err.println(" invalid input ");
 		}
-		
 		return i;
-
+		
 	}
 
-	public int deleteFoodItem(FoodItems fi){
+	public int deleteFoodItem(FoodItems fi) {
 
 		int i = 0;
 		try {
 			createFoodItemTable();
 			PreparedStatement ps = con.prepareStatement("delete from food_items where hotel_id = ? and item = ?");
 
-			if (fetchUserHotelIds(fi.getId()) > 0) {
+			if (fetchUserHotelIds(fi.getId()) == 1) {
 				ps.setInt(1, fi.getId());
 			} else {
-				System.err.println(" invalid id ");
+				System.err.println(" hotel_id not registered with your profile");
+				return 0;
 			}
-			
-			if (checkDuplicate(fi.getId(),fi.getName()) == 1) {
+
+			if (checkDuplicate(fi.getId(), fi.getName()) == 1) {
 				ps.setString(2, fi.getName());
 			} else {
-				System.err.println(fi.getName()+" already exists in hotel "+fi.getId());
+				System.err.println(fi.getName() + " doesn't exists in hotel " + fi.getId());
 				return 0;
 			}
 
@@ -206,7 +203,7 @@ public class FoodItemsOperations {
 				System.err.println(" invalid name ");
 				return 0;
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 		return i;
