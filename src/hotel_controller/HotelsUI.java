@@ -1,6 +1,7 @@
 package hotel_controller;
 
 import java.sql.SQLException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import hotel_dao.FoodItemsOperations;
@@ -58,7 +59,15 @@ public class HotelsUI {
 					switch (i) {
 					case 1: {
 						System.out.println("Enter id : ");
-						int id = sc.nextInt();
+						int id = 0;
+						try {
+							 id = sc.nextInt();
+							sc.nextLine();
+						}catch (InputMismatchException e) {
+							System.err.println(" input mis-match, please provide int type input !!");
+							sc.nextLine();
+							id = sc.nextInt();
+						}
 						ht.setId(id);
 						sc.nextLine();
 
@@ -73,7 +82,15 @@ public class HotelsUI {
 						break;
 					case 2: {
 						System.out.println("Enter id : ");
-						int id = sc.nextInt();
+						int id = 0;
+						try {
+							 id = sc.nextInt();
+							sc.nextLine();
+						}catch (InputMismatchException e) {
+							System.err.println(" input mis-match, please provide int type input !!");
+							sc.nextLine();
+							id = sc.nextInt();
+						}
 						ht.setId(id);
 						sc.nextLine();
 
