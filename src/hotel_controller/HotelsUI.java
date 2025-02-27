@@ -31,7 +31,15 @@ public class HotelsUI {
 			case 1: {
 
 				System.out.println("Enter id : ");
-				int id = sc.nextInt();
+				int id = 0;
+				try {
+					 id = sc.nextInt();
+					sc.nextLine();
+				}catch (InputMismatchException e) {
+					System.err.println(" input mis-match, please provide int type input !!");
+					sc.nextLine();
+					id = sc.nextInt();
+				}
 				ht.setId(id);
 				sc.nextLine();
 
@@ -117,7 +125,15 @@ public class HotelsUI {
 				break;
 			case 3: {
 				System.out.println("Enter id : ");
-				int id = sc.nextInt();
+				int id = 0;
+				try {
+					 id = sc.nextInt();
+					sc.nextLine();
+				}catch (InputMismatchException e) {
+					System.err.println(" input mis-match, please provide int type input !!");
+					sc.nextLine();
+					id = sc.nextInt();
+				}
 				ht.setId(id);
 				sc.nextLine();
 				ht.setEmail(UI.LoginEmail);
@@ -128,7 +144,15 @@ public class HotelsUI {
 				break;
 			case 4: {
 				System.out.println("Enter id : ");
-				int id = sc.nextInt();
+				int id = 0;
+				try {
+					 id = sc.nextInt();
+					sc.nextLine();
+				}catch (InputMismatchException e) {
+					System.err.println(" input mis-match, please provide int type input !!");
+					sc.nextLine();
+					id = sc.nextInt();
+				}
 				ht.setId(id);
 				sc.nextLine();
 
