@@ -45,8 +45,9 @@ public class FoodItemsUI {
 					sc.nextLine();
 					fi.setPrice(price);
 					
-					fo.addFoodItem(fi);
-					System.err.println("\n food item added \n");
+					int i = fo.addFoodItem(fi);
+					if(i == 1)System.err.println("\n food item added \n");
+					else System.err.println("\n food item NOT added \n");
 				}
 				break;
 				case 2 : {
