@@ -1,2 +1,2 @@
 # Restaurant_Managing_System
-- using Java,JDBC,MySql
+- using Java, JDBC, SQL
