@@ -1,2 +1,2 @@
-# Restaurant_Managing_System
+# Hotel_Managing_System
 - using Java, JDBC, SQL
