@@ -63,7 +63,7 @@ public class Profile {
 					ld.setEmail(UI.LoginEmail);
 					
 					int i = po.profileDisplay(UI.LoginEmail);
-//					System.out.println(i +" row(s) deleted ");
+					if(i > 0) System.out.println(" Profile is being displayed ");
 				}
 				break;
 				
