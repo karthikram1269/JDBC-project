@@ -144,11 +144,12 @@ static HotelOperations hs = new HotelOperations();
 
 			PreparedStatement ss1 = con.prepareStatement("select * from hotel where email = ?");
 			ss1.setString(1, email);
-			System.out.println("\n\n Hotels of "+email+" are !!!!!\n");
 			
 			ResultSet rs1 = ss1.executeQuery();
 
 			while(rs1.next()) {
+				System.out.println("\n\n Hotels of "+email+" are !!!!!\n");
+				
 				System.err.println("\n Hotel Id : " +rs1.getInt("id")+"\n Name : " + rs1.getString("name") + "\n Address : "
 						 +rs1.getString("address"));
 			}
